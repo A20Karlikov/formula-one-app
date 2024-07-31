@@ -1,0 +1,98 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragments/head}"></head>
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header>
+    <nav class="main-nav">
+        <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/">Login</a>
+                </li>
+                <li>
+                    <a href="/">Register</a>
+                </li>
+                <li>
+                    <a href="/">About</a>
+                </li>
+				<li>
+                    <a href="/">Add new race</a>
+                </li>
+                <li>
+                    <a href="/">Profile</a>
+                </li>
+                <li>
+                    <a href="/">Admin</a>
+                </li>
+                <li>
+                    <a href="/">Logout</a>
+                </li>
+        </ul>
+    </nav>
+</header>
+    <!-- Top Container -->
+    <section class="top-container">
+        <div class="showcase">
+            <h1>Driving to Glory: Unveiling the F1 Race Results</h1>
+            <p>Checkered Flags and Championship Dreams: Unveiling the F1 Race Results!</p>
+            <a href="/routes" class="btn">To results</a>
+        </div>
+        <div class="top-box top-box-a">
+            <h4>First F1 Grand Prix</h4>
+            <h4>Great Britain 1950</h4>
+            <img id="box-a-img" src="/images/greatbritain-flag.jpg" height="150px" alt="">
+        </div>
+        <div class="top-box top-box-b">
+            <h4>Most Iconic F1 Grand Prix</h4>
+            <h4>Italian Grand Prix</h4>
+            <img id="box-b-img" src="/images/italy-flag.jpg" height="150px" alt="">
+        </div>
+    </section>
+
+    <!-- Boxes Section -->
+    <section class="boxes">
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/driver.png" height="150px" alt="">
+                <h3>Drivers</h3>
+                <p>Track Titans: F1's Speed Maestros</p>
+            </div>
+        </a>
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/team.png" height="150px" alt="">
+                <h3>Teams</h3>
+                <p>Pit Crew: The Teams Behind F1</p>
+            </div>
+        </a>
+        <a href="/" class="main-btn" >
+            <div class="box">
+                <img src="/images/track.png" height="150px" alt="">
+                <h3>Tracks</h3>
+                <p>Grid Greatness: The Legendary Circuits of F1</p>
+            </div>
+        </a>
+    </section>
+
+    <!-- Records Section -->
+    <section class="road">
+        <img src="/images/records-image.webp" alt="">
+        <div>
+            <h2>All time records</h2>
+            <h3>Check out these Formula 1 records including most driver and constructor Grand Prix wins, world championships and pole positions.</h3>
+            <p>Motorsport is all about pushing yourself and your car to the absolute limit. Over the decades, Formula 1 records have tumbled as drivers have pushed harder, engines have become more powerful and the cars, inevitably, faster.</p>
+            <p>Achievement in F1 is spread between constructors and drivers. Over decades in the sport, teams like Ferrari, McLaren and Williams have broken Formula 1 records with consistently quick cars and the fastest drivers.</p>
+            <a href="/" class="btn">Learn More</a>
+        </div>
+    </section>
+
+</div>
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+
+</html>
