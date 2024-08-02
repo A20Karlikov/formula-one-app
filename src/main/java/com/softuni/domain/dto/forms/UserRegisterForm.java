@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-//@ValidateRegisterForm(username = "username")
+@ValidateRegisterForm(username = "username")
 @PasswordMatch(password = "password", confirmPassword = "confirmPassword")
 public class UserRegisterForm {
 
