@@ -1,0 +1,39 @@
+<header th:fragment="navigation">
+    <nav class="main-nav">
+        <ul th:if="${@loggedUser.id == null}">
+            <li>
+                <a th:href="@{/}">Home</a>
+            </li>
+            <li>
+                <a th:href="@{/authentication/login}">Login</a>
+            </li>
+            <li>
+                <a th:href="@{/authentication/register}">Register</a>
+            </li>
+            <li>
+                <a href="/">About</a>
+            </li>
+
+        </ul>
+        <ul th:unless="${@loggedUser.id == null}">
+            <li>
+                <a href="/">Add new race</a>
+            </li>
+
+            <li>
+                <a href="/">Profile</a>
+            </li>
+
+            <li th:if="${@loggedUser.isAdmin()}">
+                <a href="/">Admin</a>
+            </li>
+
+            <li th:unless="${@loggedUser.isAdmin()}">
+            </li>
+
+            <li>
+                <a th:href="@{/authentication/logout}">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</header>

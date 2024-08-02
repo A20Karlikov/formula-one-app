@@ -67,4 +67,8 @@ public class UserModel {
         this.roles = roles;
         return this;
     }
+
+    public boolean isValid() {
+        return this.id != null;
+    }
 }
