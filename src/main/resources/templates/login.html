@@ -1,0 +1,70 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+    .div-space {
+        margin: 25px;
+    }
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body>
+
+<main class="p-5 align-content-center bg-blur my-register-div">
+    <h2 class="text-center text-white">Login</h2>
+    <div class="d-flex justify-content-center">
+
+        <div class="row g-3 align-items-center">
+            <form
+                    th:action="@{/authentication/login}"
+                    th:method="POST"
+                    th:object="${userLoginForm}">
+
+                <p th:if="${#fields.hasAnyErrors()}"
+                   class="errors alert alert-danger">
+                    Username Or Password is invalid. Please try again.
+                </p>
+
+                <div class="div-space">
+                    <div class="col-auto">
+                        <label for="inputUsername" class="text-white font-weight-bold">Username</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text"
+                               th:value="*{username}"
+                               name="username"
+                               required minlength="4" maxlength="20"
+                               placeholder="Username"
+                               id="inputUsername"
+                               class="form-control"
+                               aria-describedby="usernameHelpInline">
+                    </div>
+                </div>
+
+                <div class="div-space">
+                    <div class="col-auto">
+                        <label for="inputPassword" class="text-white font-weight-bold">Password</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="password"
+                               name="password"
+                               placeholder="Password"
+                               required minlength="5" maxlength="20"
+                               id="inputPassword" class="form-control"
+                               aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center mt-2">
+                    <button class="btn btn-info btn-lg" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</main>
+
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+</html>

@@ -1,0 +1,137 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2 class="text-center text-white">Register</h2>
+
+    <form th:method="POST"
+          th:action="@{/authentication/register}"
+          th:object="${userRegisterForm}"
+          class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center">
+
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="username"
+                       class="text-white font-weight-bold">
+                    Username
+                </label>
+
+                <input id="username"
+                       name="username"
+                       type="text"
+                       min="4"
+                       max="20"
+                       class="form-control"
+                       placeholder="First name"
+                       th:value="*{username}"/>
+                <p th:if="${#fields.hasErrors('username')}"
+                   class="errors alert alert-danger">
+                    Username is already occupied.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="email"
+                       class="text-white font-weight-bold">
+                    Email
+                </label>
+
+                <input id="email"
+                       name="email"
+                       type="email"
+                       class="form-control"
+                       placeholder="Email"
+                       aria-describedby="emailHelpInline"
+                       th:value="*{email}"/>
+                <p th:if="${#fields.hasErrors('email')}"
+                   class="errors alert alert-danger">
+                    The inputted email is not valid.
+                </p>
+            </div>
+
+            <div class="form-group col-md-6 mb-3">
+                <label for="age"
+                       class="text-white font-weight-bold">
+                    Age
+                </label>
+
+                <input id="age"
+                       name="age"
+                       type="number"
+                       min="14"
+                       max="90"
+                       class="form-control"
+                       placeholder="Age"
+                       th:value="*{age}"/>
+                <p th:if="${#fields.hasErrors('age')}"
+                   class="errors alert alert-danger">
+                    Your age should be between 14 and 90 years.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 mb-3">
+                <label for="password"
+                       class="text-white font-weight-bold">
+                    Password
+                </label>
+                <input id="password"
+                       name="password"
+                       type="password"
+                       min="5"
+                       max="20"
+                       class="form-control"
+                       placeholder="Password"
+                       th:value="*{password}"/>
+                <p th:if="${#fields.hasErrors('password')}"
+                   class="errors alert alert-danger">
+                    Password is required.
+                </p>
+            </div>
+
+            <div class="form-group col-md-6 mb-3">
+
+                <label for="confirmPassword"
+                       class="text-white font-weight-bold">
+                    Confirm Password
+                </label>
+
+                <input id="confirmPassword"
+                       name="confirmPassword"
+                       type="password"
+                       min="5"
+                       max="20"
+                       class="form-control"
+                       placeholder="Password"
+                       th:value="*{confirmPassword}"/>
+
+                <p th:if="${#fields.hasErrors('confirmPassword')}"
+                   class="errors alert alert-danger">
+                    Passwords does not match.
+                </p>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Register"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<footer th:replace="~{/fragments/footer}"></footer>
+</body>
+</html>
