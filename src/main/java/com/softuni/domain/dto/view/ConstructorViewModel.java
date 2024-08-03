@@ -1,10 +1,7 @@
 package com.softuni.domain.dto.view;
 
-import com.softuni.domain.dto.models.DriverModel;
 import com.softuni.domain.entities.Constructor;
 import com.softuni.domain.enums.PowerUnitName;
-
-import java.util.Set;
 
 public class ConstructorViewModel {
 
