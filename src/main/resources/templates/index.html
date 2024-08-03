@@ -4,11 +4,8 @@
 <head th:replace="~{/fragments/head}"></head>
 <body>
 <div class="wrapper">
-    <!-- Navigation -->
-    <!-- Navigation -->
     <header th:replace="~{/fragments/navigation}"></header>
 
-    <!-- Top Container -->
     <section class="top-container">
         <div class="showcase">
             <h1>Driving to Glory: Unveiling the F1 Race Results</h1>
@@ -29,7 +26,7 @@
 
     <!-- Boxes Section -->
     <section class="boxes">
-        <a href="/" class="main-btn" >
+        <a th:href="@{/drivers}" class="main-btn" >
             <div class="box">
                 <img src="/images/driver.png" height="150px" alt="">
                 <h3>Drivers</h3>
