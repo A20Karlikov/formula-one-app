@@ -1,0 +1,65 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+  .grid-container {
+      display: grid;
+      gap: 40px 40px;
+      grid-template-columns: auto auto auto;
+      justify-content: space-evenly;
+      padding-top: 25px;
+      padding-bottom: 25px;
+  }
+
+  .section-style {
+      display: grid;
+      grid-template-columns: auto auto;
+      background: white;
+      border-radius: 25px;
+      padding: 20px;
+  }
+
+  .image-rounding {
+      border-radius: 25px;
+  }
+
+  .div-title {
+      padding-top: 25px;
+      font-size: 75px;
+      text-align: center;
+      font-style: italic;
+  }
+
+  .div-info {
+      width: 250px;
+      padding-left: 20px;
+  }
+
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body>
+
+<!-- Navigation -->
+<header th:replace="~{/fragments/navigation}"></header>
+
+<div class="div-title">
+  <h1 style="color:white;">Formula One Teams</h1>
+</div>
+
+<div class="grid-container">
+  <section class="section-style" th:each="constructor : ${constructors}" th:object="${constructor}">
+    <img class="image-rounding" th:src="*{imageUrl}" alt="Title image" height="100" width="200">
+
+    <div class="div-info">
+      <h3 th:text="*{name}"></h3>
+      <h5 th:text="*{engine}"></h5>
+      <a href="/" class="btn">Learn More</a>
+    </div>
+  </section>
+</div>
+
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+</html>
