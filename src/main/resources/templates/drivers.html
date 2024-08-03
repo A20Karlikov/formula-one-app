@@ -1,0 +1,67 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+    .grid-container {
+        display: grid;
+        gap: 50px 100px;
+        grid-template-columns: auto auto;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .section-style {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        background: white;
+        border-radius: 25px;
+        padding: 20px;
+    }
+
+    .image-rounding {
+        border-radius: 25px;
+    }
+
+    .race-number {
+        padding-right: 25px;
+        font-size: 110px;
+        text-align: right;
+        font-style: italic;
+    }
+
+    .div-title {
+        padding-top: 25px;
+        font-size: 75px;
+        text-align: center;
+        font-style: italic;
+    }
+
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body>
+
+<!-- Navigation -->
+<header th:replace="~{/fragments/navigation}"></header>
+
+<div class="div-title">
+    <h1 style="color:white;">Formula One Drivers</h1>
+</div>
+
+<div class="grid-container">
+    <section class="section-style" th:each="driver : ${drivers}" th:object="${driver}">
+        <img class="image-rounding" th:src="*{imageUrl}" alt="Title image" height="300" width="300">
+
+        <div class="race-number" th:text="*{raceNumber}"></div>
+        <div>
+            <h1 th:text="*{name}"></h1>
+            <h3 th:text="*{constructorName}"></h3>
+            <a href="/" class="btn">Learn More</a>
+        </div>
+    </section>
+</div>
+
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+</html>
