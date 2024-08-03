@@ -52,6 +52,21 @@ VALUES (4,'McLaren','Andrea Stella','https://media.formula1.com/image/upload/f_a
 INSERT INTO constructors (id, name, team_chief, image_url, engine, number_of_wins)
 VALUES (5,'Aston Martin','Mike Krack','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/2018-redesign-assets/team%20logos/aston%20martin%202024','MERCEDES', 1);
 
+INSERT INTO constructors (id, name, team_chief, image_url, engine, number_of_wins)
+VALUES (6,'Alpine','Bruno Famin','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/2018-redesign-assets/team%20logos/alpine','RENAULT', 21);
+
+INSERT INTO constructors (id, name, team_chief, image_url, engine, number_of_wins)
+VALUES (7,'RB','Laurent Mekies','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/2018-redesign-assets/team%20logos/rb','HONDA', 2);
+
+INSERT INTO constructors (id, name, team_chief, image_url, engine, number_of_wins)
+VALUES (8,'Williams','James Vowles','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/2018-redesign-assets/team%20logos/williams','MERCEDES', 114);
+
+INSERT INTO constructors (id, name, team_chief, image_url, engine, number_of_wins)
+VALUES (9,'Kick Sauber','Alessandro Alunni Bravi','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/2018-redesign-assets/team%20logos/kick%20sauber','FERRARI', 1);
+
+INSERT INTO constructors (id, name, team_chief, image_url, engine, number_of_wins)
+VALUES (10,'Haas','Ayao Komatsu','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/2018-redesign-assets/team%20logos/haas','FERRARI', 0);
+
 -- Drivers
 INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
 VALUES (1, 'Max Verstappen','Netherlands','EPIC','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/verstappen', 61, 1, 1);
@@ -83,6 +98,36 @@ VALUES (9, 'Fernando Alonso','Spain','EPIC','https://media.formula1.com/image/up
 INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
 VALUES (10, 'Lance Stroll','Canada','ROOKIE','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/drivers/2024Drivers/stroll', 0, 18, 5);
 
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (11, 'Pierre Gasly','France','ADVANCED','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/gasly', 1, 10, 6);
+
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (12, 'Esteban Ocon','France','ADVANCED','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/ocon', 1, 31, 6);
+
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (13, 'Daniel Ricciardo','Australia','ADVANCED','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/ricciardo', 8, 3, 7);
+
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (14, 'Yuki Tsunoda','Japan','ROOKIE','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/tsunoda', 0, 22, 7);
+
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (15, 'Alexander Albon','Thailand','ADVANCED','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/albon', 0, 23, 8);
+
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (16, 'Logan Sargeant','United States','ROOKIE','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/sargeant', 0, 2, 8);
+
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (17, 'Valtteri Bottas','Finland','ADVANCED','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/bottas', 10, 77, 9);
+
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (18, 'Zhou Guanyu','China','ROOKIE','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/zhou', 0, 24, 9);
+
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (19, 'Nico Hulkenberg','Germany','ADVANCED','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/hulkenberg', 0, 27, 10);
+
+INSERT INTO drivers (id, name, country, level, image_url, number_of_wins, race_number, constructor_id)
+VALUES (20, 'Kevin Magnussen','Denmark','ADVANCED','https://media.formula1.com/image/upload/f_auto,c_limit,q_75,w_1320/content/dam/fom-website/drivers/2024Drivers/magnussen', 0, 20, 10);
+
 -- Teams drivers
 INSERT INTO constructors_drivers
 VALUES (1, 1);
@@ -113,6 +158,38 @@ VALUES (5, 9);
 
 INSERT INTO constructors_drivers
 VALUES (5, 10);
+
+
+
+INSERT INTO constructors_drivers
+VALUES (6, 11);
+
+INSERT INTO constructors_drivers
+VALUES (6, 12);
+
+INSERT INTO constructors_drivers
+VALUES (7, 13);
+
+INSERT INTO constructors_drivers
+VALUES (7, 14);
+
+INSERT INTO constructors_drivers
+VALUES (8, 15);
+
+INSERT INTO constructors_drivers
+VALUES (8, 16);
+
+INSERT INTO constructors_drivers
+VALUES (9, 17);
+
+INSERT INTO constructors_drivers
+VALUES (9, 18);
+
+INSERT INTO constructors_drivers
+VALUES (10, 19);
+
+INSERT INTO constructors_drivers
+VALUES (10, 20);
 
 -- Tracks
 INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
