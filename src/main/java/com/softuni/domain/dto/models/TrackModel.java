@@ -5,9 +5,11 @@ public class TrackModel {
     private Long id;
     private String name;
     private String country;
+    private String countryFlagUrl;
     private String imageUrl;
     private Integer firstRace;
     private Integer numberOfLaps;
+    private String lapRecord;
     private DriverModel lapRecordHolder;
 
     public TrackModel() {
@@ -40,6 +42,15 @@ public class TrackModel {
         return this;
     }
 
+    public String getCountryFlagUrl() {
+        return countryFlagUrl;
+    }
+
+    public TrackModel setCountryFlagUrl(String countryFlagUrl) {
+        this.countryFlagUrl = countryFlagUrl;
+        return this;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -64,6 +75,15 @@ public class TrackModel {
 
     public TrackModel setNumberOfLaps(Integer numberOfLaps) {
         this.numberOfLaps = numberOfLaps;
+        return this;
+    }
+
+    public String getLapRecord() {
+        return lapRecord;
+    }
+
+    public TrackModel setLapRecord(String lapRecord) {
+        this.lapRecord = lapRecord;
         return this;
     }
 

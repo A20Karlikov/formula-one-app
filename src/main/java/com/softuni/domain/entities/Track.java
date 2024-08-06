@@ -16,6 +16,9 @@ public class Track extends BaseEntity {
     private String country;
 
     @Column(columnDefinition = "TEXT")
+    private String countryFlagUrl;
+
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
 
     @Column
@@ -23,6 +26,9 @@ public class Track extends BaseEntity {
 
     @Column
     private Integer numberOfLaps;
+
+    @Column
+    private String lapRecord;
 
     @OneToOne
     private Driver lapRecordHolder;
@@ -45,6 +51,15 @@ public class Track extends BaseEntity {
 
     public Track setCountry(String country) {
         this.country = country;
+        return this;
+    }
+
+    public String getCountryFlagUrl() {
+        return countryFlagUrl;
+    }
+
+    public Track setCountryFlagUrl(String countryFlagUrl) {
+        this.countryFlagUrl = countryFlagUrl;
         return this;
     }
 
@@ -72,6 +87,15 @@ public class Track extends BaseEntity {
 
     public Track setNumberOfLaps(Integer numberOfLaps) {
         this.numberOfLaps = numberOfLaps;
+        return this;
+    }
+
+    public String getLapRecord() {
+        return lapRecord;
+    }
+
+    public Track setLapRecord(String lapRecord) {
+        this.lapRecord = lapRecord;
         return this;
     }
 

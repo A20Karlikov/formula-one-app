@@ -1,0 +1,144 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+    .div-title {
+        padding-top: 25px;
+        font-size: 75px;
+        text-align: center;
+        font-style: italic;
+    }
+
+    .centered-row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-bottom: 60px;
+}
+
+    .countries-container {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        column-gap: 20px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .country-flag-container {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .country-flag {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        border: 2px solid gold;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        object-fit: cover;
+    }
+
+    .country-name {
+        padding-top: 10px;
+        text-style: italic;
+        color: white;
+    }
+
+    .track-info-card {
+        display: grid;
+        grid-template-columns: 700px 500px;
+        padding: 50px;
+        background: white;
+        border-radius: 20px;
+    }
+
+    .track-image {
+        width: 700px;
+        height: 500px;
+        object-fit: contain;
+        padding: 30px;
+        border: 2px solid gold;
+        border-radius: 25px;
+    }
+
+    .small-flag {
+        height: 50px;
+        width: 80px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid grey;
+    }
+
+    .track-info-name {
+        font-style: italic;
+        margin-bottom: 60px;
+    }
+
+    .vertical-spacer {
+        height: 40px;
+    }
+
+    .horizontal-spacer {
+        width: 20px;
+    }
+
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body class="body-style">
+
+<!-- Navigation -->
+<header th:replace="~{/fragments/navigation}"></header>
+
+<div class="div-title">
+    <h1 style="color:white;">Formula One Tracks</h1>
+</div>
+
+<div class="centered-row">
+    <div class="country-flag-container" th:each="countryFlag : ${countryFlags}" th:object="${countryFlag}">
+        <img class="country-flag" th:src="*{countryFlagUrl}">
+        <a class="country-name" th:text="*{name}" th:href="@{/tracks/{name}(name=*{name})}"></a>
+    </div>
+
+</div>
+
+<div class="centered-row">
+    <div class="track-info-card" th:object="${trackByCountry}">
+        <img class="track-image" th:src="*{imageUrl}">
+        <div class="col">
+
+            <div class="row auto">
+                <div class="horizontal-spacer"></div>
+                <img class="small-flag" th:src="*{countryFlagUrl}">
+                <div class="horizontal-spacer"></div>
+                <h1 th:text="*{country}"></h1>
+            </div>
+
+            <h3 class="track-info-name" th:text="*{name}"></h3>
+
+            <h5 style="color:gray">First Grand Prix</h5>
+            <h3 style="font-weight: bold" th:text="*{firstRace}"></h3>
+            <div class="vertical-spacer"></div>
+
+            <h5 style="color:gray">Number Of Laps</h5>
+            <h3 style="font-weight: bold" th:text="*{numberOfLaps}"></h3>
+            <div class="vertical-spacer"></div>
+
+            <h5 style="color:gray">Lap Record</h5>
+            <h1 style="font-style: italic" th:text="*{lapRecord}"></h1>
+            <h3 style="font-weight: bold" th:text="*{lapRecordHolder}"></h3>
+        </div>
+    </div>
+</div>
+
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+</html>

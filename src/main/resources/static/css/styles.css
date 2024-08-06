@@ -14,11 +14,10 @@ html {
 }
 
 body {
-    background-image: url("/images/background.jpg");
-    backdrop-filter: blur(4px);
-    padding: 10px;
+    background-image: url("/images/background.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
     margin: 30px 50px;
     line-height: 1.4;
 }
@@ -61,15 +60,15 @@ img {
 }
 
 .main-nav a {
-    background: var(--primary);
+    background: white;
     display: block;
     text-decoration: none;
     padding: 0.8rem;
     text-align: center;
     color: var(--dark);
-    text-transform: uppercase;
     font-size: 1.1rem;
     box-shadow: var(--shadow);
+    border-radius: 15px
 }
 
 .main-nav a:hover {
@@ -99,6 +98,7 @@ img {
     align-items: start;
     justify-content: center;
     box-shadow: var(--shadow);
+    border-radius: 25px;
 }
 
 .showcase h1 {
@@ -115,12 +115,13 @@ img {
 
 /* Top Box */
 .top-box {
-    background: var(--primary);
+    background: white;
     display: grid;
     align-items: center;
     justify-items: center;
     box-shadow: var(--shadow);
     padding: 1.5rem;
+    border-radius: 25px;
 }
 
 .top-box .price {
@@ -143,21 +144,23 @@ img {
 }
 
 .box {
-    background: var(--primary);
+    background: white;
     text-align: center;
     padding: 1.5rem 2rem;
     box-shadow: var(--shadow);
+    border-radius: 25px;
 }
 
 /* Info */
 .road {
-    background: var(--primary);
+    background: white;
     box-shadow: var(--shadow);
     display: grid;
     grid-gap: 30px;
     grid-template-columns: repeat(2, 1fr);
     padding: 3rem;
     grid-row: auto;
+    border-radius: 25px;
 }
 
 
@@ -176,10 +179,11 @@ img {
 /* Footer */
 footer {
     margin-top: 2rem;
-    background: var(--dark);
+    background: white;
     color: var(--light);
     text-align: center;
     padding: 1rem;
+    border-radius: 25px;
 }
 
 /* About */
