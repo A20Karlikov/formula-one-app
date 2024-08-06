@@ -192,32 +192,32 @@ INSERT INTO constructors_drivers
 VALUES (10, 20);
 
 -- Tracks
-INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
-VALUES (1,'Circuit de Spa-Francorchamps','Belgium','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit', 1950, 44, 9);
+INSERT INTO tracks(id, name, country, country_flag_url, image_url, first_race, number_of_laps, lap_record, lap_record_holder_id)
+VALUES (1,'Circuit de Spa-Francorchamps','Belgium','https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Belgium.svg','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Belgium_Circuit', 1950, 44,'1:44.701', 9);
 
-INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
-VALUES (2,'Albert Park Grand Prix Circuit','Australia','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_771/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit', 1996, 58, 3);
+INSERT INTO tracks(id, name, country, country_flag_url, image_url, first_race, number_of_laps, lap_record, lap_record_holder_id)
+VALUES (2,'Albert Park Grand Prix Circuit','Australia','https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_771/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Australia_Circuit', 1996, 58, '1:19.813', 3);
 
-INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
-VALUES (3,'Suzuka Circuit','Japan','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Japan_Circuit', 1987, 53, 5);
+INSERT INTO tracks(id, name, country, country_flag_url, image_url, first_race, number_of_laps, lap_record, lap_record_holder_id)
+VALUES (3,'Suzuka Circuit','Japan','https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Japan_Circuit', 1987, 53, '1:30.983', 5);
 
-INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
-VALUES (4,'Circuit de Monaco','Monaco','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Monoco_Circuit', 1950, 78, 5);
+INSERT INTO tracks(id, name, country, country_flag_url, image_url, first_race, number_of_laps, lap_record, lap_record_holder_id)
+VALUES (4,'Circuit de Monaco','Monaco','https://cdn.britannica.com/50/2750-050-688E6E49/Flag-Monaco.jpg','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Monoco_Circuit', 1950, 78, '1:12.909', 5);
 
-INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
-VALUES (5,'Silverstone Circuit','Great Britain','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Great_Britain_Circuit', 1950, 52, 1);
+INSERT INTO tracks(id, name, country, country_flag_url, image_url, first_race, number_of_laps, lap_record, lap_record_holder_id)
+VALUES (5,'Silverstone Circuit','Great Britain','https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1280px-Flag_of_the_United_Kingdom.svg.png','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Great_Britain_Circuit', 1950, 52, '1:27.097', 1);
 
-INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
-VALUES (6,'Autodromo Nazionale Monza','Italy','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit', 1950, 53, 7);
+INSERT INTO tracks(id, name, country, country_flag_url, image_url, first_race, number_of_laps, lap_record, lap_record_holder_id)
+VALUES (6,'Autodromo Nazionale Monza','Italy','https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Italy_Circuit', 1950, 53, '1:21.046', 7);
 
-INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
-VALUES (7,'Hungaroring','Hungary','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Hungary_Circuit', 1986, 70, 5);
+INSERT INTO tracks(id, name, country, country_flag_url, image_url, first_race, number_of_laps, lap_record, lap_record_holder_id)
+VALUES (7,'Hungaroring','Hungary','https://cdn.britannica.com/55/1455-004-5897143C/Flag-Hungary.jpg','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Hungary_Circuit', 1986, 70, '1:16.627', 5);
 
-INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
-VALUES (8,'Autódromo José Carlos Pace','Brasil','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Brazil_Circuit', 1973, 71, 9);
+INSERT INTO tracks(id, name, country, country_flag_url, image_url, first_race, number_of_laps, lap_record, lap_record_holder_id)
+VALUES (8,'Autódromo José Carlos Pace','Brasil','https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/1060px-Flag_of_Brazil.svg.png','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Brazil_Circuit', 1973, 71, '1:10.540', 17);
 
-INSERT INTO tracks(id, name, country, image_url, first_race, number_of_laps, lap_record_holder_id)
-VALUES (9,'Las Vegas Strip Circuit','USA','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Las_Vegas_Circuit', 2023, 50, 8);
+INSERT INTO tracks(id, name, country, country_flag_url, image_url, first_race, number_of_laps, lap_record, lap_record_holder_id)
+VALUES (9,'Las Vegas Strip Circuit','USA','https://cdn.britannica.com/33/4833-004-828A9A84/Flag-United-States-of-America.jpg','https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Las_Vegas_Circuit', 2023, 50, '1:35.490', 8);
 
 
 -- Races
