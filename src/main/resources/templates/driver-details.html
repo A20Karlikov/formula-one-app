@@ -45,6 +45,13 @@
         padding-top: 20px;
     }
 
+    .constructor-link {
+        font-weight: bold;
+        font-style: italic;
+        font-size: 35px;
+        color: black
+    }
+
 </style>
 
 <head th:replace="~{/fragments/head}">
@@ -78,7 +85,7 @@
             <div class="vertical-spacer"></div>
 
             <h5 style="color:gray">Team</h5>
-            <h3 style="font-weight: bold" th:text="*{constructorName}"></h3>
+            <a class="constructor-link" th:href="@{/constructors/{name}(name=*{constructorName})}" th:text="*{constructorName}"></a>
         </div>
 
         <div class="biography-part">
