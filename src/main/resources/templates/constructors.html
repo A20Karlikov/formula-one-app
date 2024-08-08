@@ -55,7 +55,7 @@
     <div class="div-info">
       <h3 th:text="*{name}"></h3>
       <h6 th:text="*{engine}"></h6>
-      <a href="/" class="btn">Learn More</a>
+      <a th:href="@{/constructors/{name}(name=*{name})}" class="btn">Learn More</a>
     </div>
   </section>
 </div>

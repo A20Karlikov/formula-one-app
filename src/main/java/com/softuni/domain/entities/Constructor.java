@@ -3,6 +3,7 @@ package com.softuni.domain.entities;
 import com.softuni.domain.enums.PowerUnitName;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,13 +13,28 @@ public class Constructor extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
+    @Column
+    private String fullTeamName;
+
     @Column(nullable = false)
     private String teamChief;
+
+    @Column(columnDefinition = "LONGTEXT")
+    private String profile;
+
+    @Column
+    private Integer firstTeamEntry;
+
+    @Column
+    private Integer worldTitles;
+
+    @Column(columnDefinition = "TEXT")
+    private String carImageUrl;
 
     @Column(columnDefinition = "TEXT")
     private String imageUrl;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Driver> drivers;
 
     @Enumerated(EnumType.STRING)
@@ -82,5 +98,45 @@ public class Constructor extends BaseEntity {
     public Constructor setNumberOfWins(Integer numberOfWins) {
         this.numberOfWins = numberOfWins;
         return this;
+    }
+
+    public String getFullTeamName() {
+        return fullTeamName;
+    }
+
+    public void setFullTeamName(String fullTeamName) {
+        this.fullTeamName = fullTeamName;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public Integer getFirstTeamEntry() {
+        return firstTeamEntry;
+    }
+
+    public void setFirstTeamEntry(Integer firstTeamEntry) {
+        this.firstTeamEntry = firstTeamEntry;
+    }
+
+    public Integer getWorldTitles() {
+        return worldTitles;
+    }
+
+    public void setWorldTitles(Integer worldTitles) {
+        this.worldTitles = worldTitles;
+    }
+
+    public String getCarImageUrl() {
+        return carImageUrl;
+    }
+
+    public void setCarImageUrl(String carImageUrl) {
+        this.carImageUrl = carImageUrl;
     }
 }

@@ -2,13 +2,19 @@ package com.softuni.domain.dto.models;
 
 import com.softuni.domain.enums.PowerUnitName;
 
+import java.util.List;
 import java.util.Set;
 
 public class ConstructorModel {
 
     private Long id;
     private String name;
+    private String fullTeamName;
     private String teamChief;
+    private String profile;
+    private Integer firstTeamEntry;
+    private Integer worldTitles;
+    private String carImageUrl;
     private String imageUrl;
     private Set<DriverModel> drivers;
     private PowerUnitName engine;
@@ -78,5 +84,45 @@ public class ConstructorModel {
     public ConstructorModel setNumberOfWins(Integer numberOfWins) {
         this.numberOfWins = numberOfWins;
         return this;
+    }
+
+    public String getFullTeamName() {
+        return fullTeamName;
+    }
+
+    public void setFullTeamName(String fullTeamName) {
+        this.fullTeamName = fullTeamName;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public Integer getFirstTeamEntry() {
+        return firstTeamEntry;
+    }
+
+    public void setFirstTeamEntry(Integer firstTeamEntry) {
+        this.firstTeamEntry = firstTeamEntry;
+    }
+
+    public Integer getWorldTitles() {
+        return worldTitles;
+    }
+
+    public void setWorldTitles(Integer worldTitles) {
+        this.worldTitles = worldTitles;
+    }
+
+    public String getCarImageUrl() {
+        return carImageUrl;
+    }
+
+    public void setCarImageUrl(String carImageUrl) {
+        this.carImageUrl = carImageUrl;
     }
 }

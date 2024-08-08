@@ -24,8 +24,8 @@ public class DriverController extends BaseController {
         return super.view("drivers", modelAndView.addObject("drivers", this.driverService.getAllDrivers()));
     }
 
-    @GetMapping("/{id}")
-    public ModelAndView getDriverDetails(@PathVariable Long id, ModelAndView modelAndView) {
-        return super.view("driver-details", modelAndView.addObject("driverDetails", this.driverService.getDriverDetails(id)));
+    @GetMapping("/{name}")
+    public ModelAndView getDriverDetails(@PathVariable String name, ModelAndView modelAndView) {
+        return super.view("driver-details", modelAndView.addObject("driverDetails", this.driverService.getDriverDetails(name)));
     }
 }

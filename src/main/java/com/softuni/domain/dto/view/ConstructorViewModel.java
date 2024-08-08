@@ -1,13 +1,22 @@
 package com.softuni.domain.dto.view;
 
 import com.softuni.domain.entities.Constructor;
+import com.softuni.domain.entities.Driver;
 import com.softuni.domain.enums.PowerUnitName;
+
+import java.util.List;
+import java.util.Set;
 
 public class ConstructorViewModel {
 
     private Long id;
     private String name;
+    private String fullTeamName;
     private String teamChief;
+    private String profile;
+    private Integer firstTeamEntry;
+    private Integer worldTitles;
+    private String carImageUrl;
     private String imageUrl;
     private PowerUnitName engine;
     private Integer numberOfWins;
@@ -15,10 +24,27 @@ public class ConstructorViewModel {
     public ConstructorViewModel() {
     }
 
-    public ConstructorViewModel(Long id, String name, String teamChief, String imageUrl, PowerUnitName engine, Integer numberOfWins) {
+    public ConstructorViewModel(
+            Long id,
+            String name,
+            String fullTeamName,
+            String teamChief,
+            String profile,
+            Integer firstTeamEntry,
+            Integer worldTitles,
+            String carImageUrl,
+            String imageUrl,
+            PowerUnitName engine,
+            Integer numberOfWins
+    ) {
         this.id = id;
         this.name = name;
+        this.fullTeamName = fullTeamName;
         this.teamChief = teamChief;
+        this.profile = profile;
+        this.firstTeamEntry = firstTeamEntry;
+        this.worldTitles = worldTitles;
+        this.carImageUrl = carImageUrl;
         this.imageUrl = imageUrl;
         this.engine = engine;
         this.numberOfWins = numberOfWins;
@@ -78,11 +104,56 @@ public class ConstructorViewModel {
         return this;
     }
 
+    public String getFullTeamName() {
+        return fullTeamName;
+    }
+
+    public void setFullTeamName(String fullTeamName) {
+        this.fullTeamName = fullTeamName;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public Integer getFirstTeamEntry() {
+        return firstTeamEntry;
+    }
+
+    public void setFirstTeamEntry(Integer firstTeamEntry) {
+        this.firstTeamEntry = firstTeamEntry;
+    }
+
+    public Integer getWorldTitles() {
+        return worldTitles;
+    }
+
+    public void setWorldTitles(Integer worldTitles) {
+        this.worldTitles = worldTitles;
+    }
+
+    public String getCarImageUrl() {
+        return carImageUrl;
+    }
+
+    public void setCarImageUrl(String carImageUrl) {
+        this.carImageUrl = carImageUrl;
+    }
+
     public static ConstructorViewModel fromConstructor(Constructor constructor) {
         return new ConstructorViewModel(
                 constructor.getId(),
                 constructor.getName(),
+                constructor.getFullTeamName(),
                 constructor.getTeamChief(),
+                constructor.getProfile(),
+                constructor.getFirstTeamEntry(),
+                constructor.getWorldTitles(),
+                constructor.getCarImageUrl(),
                 constructor.getImageUrl(),
                 constructor.getEngine(),
                 constructor.getNumberOfWins()

@@ -31,9 +31,9 @@ public class DriverService {
                 .toList();
     }
 
-    public DriverViewModel getDriverDetails(Long id) {
+    public DriverViewModel getDriverDetails(String name) {
         return this.modelMapper.map(
-                this.driverRepository.findById(id),
+                this.driverRepository.findByName(name),
                 DriverViewModel.class
         );
     }
