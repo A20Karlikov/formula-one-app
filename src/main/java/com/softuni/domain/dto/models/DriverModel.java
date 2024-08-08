@@ -8,8 +8,10 @@ public class DriverModel {
     private String name;
     private String country;
     private DriverLevel level;
+    private String description;
     private String imageUrl;
     private Integer numberOfWins;
+    private Integer podiums;
     private Integer raceNumber;
     private ConstructorModel constructor;
 
@@ -52,6 +54,14 @@ public class DriverModel {
         return this;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -68,6 +78,14 @@ public class DriverModel {
     public DriverModel setNumberOfWins(Integer numberOfWins) {
         this.numberOfWins = numberOfWins;
         return this;
+    }
+
+    public Integer getPodiums() {
+        return podiums;
+    }
+
+    public void setPodiums(Integer podiums) {
+        this.podiums = podiums;
     }
 
     public Integer getRaceNumber() {

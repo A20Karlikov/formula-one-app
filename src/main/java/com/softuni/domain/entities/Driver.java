@@ -16,11 +16,17 @@ public class Driver extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private DriverLevel level;
 
+    @Column(columnDefinition = "LONGTEXT")
+    private String description;
+
     @Column(columnDefinition = "TEXT")
     private String imageUrl;
 
     @Column
     private Integer numberOfWins;
+
+    @Column
+    private Integer podiums;
 
     @Column(nullable = false)
     private Integer raceNumber;
@@ -58,6 +64,14 @@ public class Driver extends BaseEntity {
         return this;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -74,6 +88,14 @@ public class Driver extends BaseEntity {
     public Driver setNumberOfWins(Integer numberOfWins) {
         this.numberOfWins = numberOfWins;
         return this;
+    }
+
+    public Integer getPodiums() {
+        return podiums;
+    }
+
+    public void setPodiums(Integer podiums) {
+        this.podiums = podiums;
     }
 
     public Integer getRaceNumber() {

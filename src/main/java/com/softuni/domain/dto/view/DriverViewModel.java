@@ -9,21 +9,36 @@ public class DriverViewModel {
     private String name;
     private String country;
     private DriverLevel level;
+    private String description;
     private String imageUrl;
     private Integer numberOfWins;
+    private Integer podiums;
     private Integer raceNumber;
     private String constructorName;
 
     public DriverViewModel() {
     }
 
-    public DriverViewModel(Long id, String name, String country, DriverLevel level, String imageUrl, Integer numberOfWins, Integer raceNumber, String constructorName) {
+    public DriverViewModel(
+            Long id,
+            String name,
+            String country,
+            DriverLevel level,
+            String description,
+            String imageUrl,
+            Integer numberOfWins,
+            Integer podiums,
+            Integer raceNumber,
+            String constructorName
+    ) {
         this.id = id;
         this.name = name;
         this.country = country;
         this.level = level;
+        this.description = description;
         this.imageUrl = imageUrl;
         this.numberOfWins = numberOfWins;
+        this.podiums = podiums;
         this.raceNumber = raceNumber;
         this.constructorName = constructorName;
     }
@@ -64,6 +79,14 @@ public class DriverViewModel {
         return this;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -80,6 +103,14 @@ public class DriverViewModel {
     public DriverViewModel setNumberOfWins(Integer numberOfWins) {
         this.numberOfWins = numberOfWins;
         return this;
+    }
+
+    public Integer getPodiums() {
+        return podiums;
+    }
+
+    public void setPodiums(Integer podiums) {
+        this.podiums = podiums;
     }
 
     public Integer getRaceNumber() {
@@ -106,8 +137,10 @@ public class DriverViewModel {
                 driver.getName(),
                 driver.getCountry(),
                 driver.getLevel(),
+                driver.getDescription(),
                 driver.getImageUrl(),
                 driver.getNumberOfWins(),
+                driver.getPodiums(),
                 driver.getRaceNumber(),
                 driver.getConstructor().getName()
         );
