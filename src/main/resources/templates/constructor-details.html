@@ -1,0 +1,155 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+
+    .main-content {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .constructor-info-card {
+        display: grid;
+        grid-template-columns: auto auto;
+        padding: 50px;
+        background: white;
+        border-radius: 25px;
+    }
+
+    .team-logo {
+        width: 200px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 25px;
+    }
+
+    .car-image {
+        width: 800px;
+        height: 200px;
+        object-fit: contain;
+    }
+
+    .vertical-spacer {
+        height: 20px;
+    }
+
+    .horizontal-spacer {
+        width: 20px;
+    }
+
+    .details-row {
+        display: flex;
+        align-items: center;
+        gap: 0px 20px;
+    }
+
+    .driver-image {
+        width: 150px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    .drivers-info {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .team-badge {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 800px;
+    }
+
+    .inner-team-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 30px;
+    }
+
+    .driver-link {
+        font-size: 20px;
+        color: black;
+        font-style: italic
+    }
+
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body class="body-style">
+
+<!-- Navigation -->
+<header th:replace="~{/fragments/navigation}"></header>
+
+<div class="vertical-spacer"></div>
+<div class="main-content">
+    <div class="constructor-info-card" th:object="${constructorDetails}">
+        <img class="car-image" th:src="*{carImageUrl}">
+
+        <div class="col">
+            <div class="details-row">
+                <h6 style="color:gray">Full Team Name</h6>
+                <h4 style="font-weight: bold" th:text="*{fullTeamName}"></h4>
+                <div class="vertical-spacer"></div>
+            </div>
+
+            <div class="details-row">
+                <h6 style="color:gray">Team Chief</h6>
+                <h4 style="font-weight: bold" th:text="*{teamChief}"></h4>
+                <div class="vertical-spacer"></div>
+            </div>
+
+            <div class="details-row">
+                <h6 style="color:gray">First Team Entry</h6>
+                <h4 style="font-weight: bold" th:text="*{firstTeamEntry}"></h4>
+                <div class="vertical-spacer"></div>
+            </div>
+
+            <div class="details-row">
+                <h6 style="color:gray">World championships</h6>
+                <h4 style="font-weight: bold" th:text="*{worldTitles}"></h4>
+                <div class="vertical-spacer"></div>
+            </div>
+
+            <div class="details-row">
+                <h6 style="color:gray">Number of Wins</h6>
+                <h4 style="font-weight: bold" th:text="*{numberOfWins}"></h4>
+                <div class="vertical-spacer"></div>
+            </div>
+        </div>
+
+        <div class="team-badge">
+            <div class="inner-team-badge">
+                <h1 style="font-weight: bold" th:text="*{name}"></h1>
+                <h4 th:text="*{engine}"></h4>
+                <img class="team-logo" th:src="*{imageUrl}">
+            </div>
+
+            <div style="width:450px">
+                <h3 style="color: grey">Profile</h3>
+                <p style="font-size: 16px;" th:text="*{profile}"></p>
+            </div>
+        </div>
+
+        <div class="centered-row">
+            <div class="drivers-info" th:each="driver : ${drivers}" th:object="${driver}">
+                <img class="driver-image" th:src="*{imageUrl}">
+                <div class="vertical-spacer"></div>
+                <a class="driver-link" th:href="@{/drivers/{name}(name=*{name})}" th:text="*{name}"></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+</html>

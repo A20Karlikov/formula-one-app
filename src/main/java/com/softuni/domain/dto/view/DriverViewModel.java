@@ -2,6 +2,7 @@ package com.softuni.domain.dto.view;
 
 import com.softuni.domain.entities.Driver;
 import com.softuni.domain.enums.DriverLevel;
+import com.softuni.domain.enums.RoleName;
 
 public class DriverViewModel {
 
@@ -145,4 +146,13 @@ public class DriverViewModel {
                 driver.getConstructor().getName()
         );
     }
+
+    public Boolean isAdvanced() {
+        return level.name().equals(DriverLevel.ADVANCED.name()) || level.name().equals(DriverLevel.EPIC.name());
+    }
+
+    public Boolean isEpic() {
+        return level.name().equals(DriverLevel.EPIC.name());
+    }
+
 }
