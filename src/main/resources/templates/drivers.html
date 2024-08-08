@@ -31,13 +31,6 @@
         font-style: italic;
     }
 
-    .div-title {
-        padding-top: 25px;
-        font-size: 75px;
-        text-align: center;
-        font-style: italic;
-    }
-
 </style>
 
 <head th:replace="~{/fragments/head}">
@@ -59,7 +52,7 @@
         <div>
             <h2 th:text="*{name}"></h2>
             <h4 th:text="*{constructorName}"></h4>
-            <a href="/" class="btn">Learn More</a>
+            <a th:href="@{/drivers/{id}(id=*{id})}" class="btn">Learn More</a>
         </div>
     </section>
 </div>
