@@ -1,0 +1,170 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+
+    .records-grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 25px;
+        background: white;
+        justify-content: space-evenly;
+        padding: 25px;
+        border-radius: 25px;
+    }
+
+    .record-section-style {
+        display: grid;
+        grid-template-columns: auto 150px;
+        align-items:center;
+        border: 2px solid grey;
+        border-radius: 25px;
+        padding: 20px;
+    }
+
+    .record-image {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        border-radius: 25px;
+    }
+
+    .record-image:hover {
+        opacity: 0.6;
+    }
+
+    .record-texts {
+        display: flex;
+        flex-direction: column;
+        padding-right: 50px;
+    }
+
+    .record-line {
+        font-size: 30px;
+        color: grey
+    }
+
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body>
+
+<!-- Navigation -->
+<header th:replace="~{/fragments/navigation}"></header>
+
+<div class="records-grid-container">
+
+    <section style="padding: 20px">
+        <h1 style="font-weight: bold">Records(according to the active Drivers/Constructors)</h1>
+    </section>
+
+    <section class="record-section-style" th:object="${driverMostWins}">
+        <div class="record-texts">
+            <h3>Most Grand Prix Wins Victories (driver)</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'Victories: ' + *{numberOfWins}"></span>
+            <h3 th></h3>
+        </div>
+
+        <a th:href="@{/drivers/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${driverMostPodiums}">
+        <div class="record-texts">
+            <h3>Most Grand Prix Wins Podiums (driver)</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'Podiums: ' + *{podiums}"></span>
+        </div>
+
+        <a th:href="@{/drivers/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${constructorWithMostWins}">
+        <div class="record-texts">
+            <h3>Most Grand Prix Wins Podiums (constructor)</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'Victories: ' + *{numberOfWins}"></span>
+        </div>
+
+        <a th:href="@{/constructors/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${constructorWithMostTitles}">
+        <div class="record-texts">
+            <h3>Most Constructors’ World Championships</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'World Championships: ' + *{worldTitles}"></span>
+        </div>
+
+        <a th:href="@{/constructors/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style">
+        <div class="record-texts">
+            <h3>Country with Most Drivers</h3>
+            <h1 th:text="*{countryWithMostDrivers}"></h1>
+        </div>
+    </section>
+
+    <section class="record-section-style" th:object="${oldestConstructor}">
+        <div class="record-texts">
+            <h3>Oldest F1 Constructor</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'First Team Entry: ' + *{firstTeamEntry}"></span>
+        </div>
+
+        <a th:href="@{/constructors/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${youngestConstructor}">
+        <div class="record-texts">
+            <h3>Youngest F1 Constructor</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'First Team Entry: ' + *{firstTeamEntry}"></span>
+        </div>
+
+        <a th:href="@{/constructors/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${trackWithMostLaps}">
+        <div class="record-texts">
+            <h3>Track with Most Laps</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'Laps: ' + *{numberOfLaps}"></span>
+        </div>
+
+        <a th:href="@{/tracks/{name}(name=*{country})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+
+    <section class="record-section-style" th:object="${oldestTrack}">
+        <div class="record-texts">
+            <h3>Oldest F1 Track</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'First Grand Prix: ' + *{firstRace}"></span>
+        </div>
+
+        <a th:href="@{/tracks/{name}(name=*{country})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+</div>
+
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+</html>

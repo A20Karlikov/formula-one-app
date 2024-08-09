@@ -19,15 +19,15 @@ public class TracksController extends BaseController {
         this.trackService = trackService;
     }
 
-    @GetMapping("/{countryName}")
+    @GetMapping("/{name}")
     public ModelAndView getAllTracks(
-            @PathVariable String countryName,
+            @PathVariable String name,
             ModelAndView modelAndView
     ) {
         return super.view(
                         "tracks",
                         modelAndView
-                                .addObject("trackByCountry", this.trackService.getSelectedTrack(countryName)))
+                                .addObject("trackByCountry", this.trackService.getSelectedTrack(name)))
                                 .addObject("countryFlags", this.trackService.getCountryFlagsInfo());
     }
 }

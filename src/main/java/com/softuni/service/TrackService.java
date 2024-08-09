@@ -20,10 +20,10 @@ public class TrackService {
         this.trackRepository = trackRepository;
     }
 
-    public TrackViewModel getSelectedTrack(String countryName) {
+    public TrackViewModel getSelectedTrack(String name) {
         return streamTracks()
                 .map(TrackViewModel::fromTrack)
-                .filter(trackViewModel -> trackViewModel.getCountry().equals(countryName))
+                .filter(trackViewModel -> trackViewModel.getCountry().equals(name))
                 .findFirst().get();
     }
 
@@ -37,5 +37,21 @@ public class TrackService {
 
     private Stream<Track> streamTracks() {
         return this.trackRepository.findAll().stream();
+    }
+
+    public TrackViewModel getTrackWithMostLaps() {
+        return this.trackRepository
+                .findTrackWithMostLaps()
+                .stream()
+                .map(TrackViewModel::fromTrack)
+                .toList().get(0);
+    }
+
+    public TrackViewModel getOldestTrack() {
+        return this.trackRepository
+                .findOldestTrack()
+                .stream()
+                .map(TrackViewModel::fromTrack)
+                .toList().get(0);
     }
 }
