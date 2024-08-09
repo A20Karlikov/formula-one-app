@@ -76,6 +76,12 @@
         width: 20px;
     }
 
+    .lap-record-holder-link {
+        font-size: 25px;
+        font-weight: bold;
+        color: black;
+    }
+
 </style>
 
 <head th:replace="~{/fragments/head}">
@@ -121,7 +127,7 @@
 
             <h5 style="color:gray">Lap Record</h5>
             <h1 style="font-style: italic" th:text="*{lapRecord}"></h1>
-            <h3 style="font-weight: bold" th:text="*{lapRecordHolder}"></h3>
+            <a class="lap-record-holder-link" th:text="*{lapRecordHolder}" th:href="@{/drivers/{name}(name=*{lapRecordHolder})}"></a>
         </div>
     </div>
 </div>

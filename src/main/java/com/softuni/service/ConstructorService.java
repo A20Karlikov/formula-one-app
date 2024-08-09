@@ -47,4 +47,36 @@ public class ConstructorService {
                 .map(DriverViewModel::fromDriver)
                 .toList();
     }
+
+    public ConstructorViewModel getConstructorWithMostWins() {
+        return this.constructorRepository
+                .findConstructorWithMostWins()
+                .stream()
+                .map(ConstructorViewModel::fromConstructor)
+                .toList().get(0);
+    }
+
+    public ConstructorViewModel getConstructorWithMostTitles() {
+        return this.constructorRepository
+                .findConstructorWithMostTitles()
+                .stream()
+                .map(ConstructorViewModel::fromConstructor)
+                .toList().get(0);
+    }
+
+    public ConstructorViewModel getOldestConstructor() {
+        return this.constructorRepository
+                .findOldestTeam()
+                .stream()
+                .map(ConstructorViewModel::fromConstructor)
+                .toList().get(0);
+    }
+
+    public ConstructorViewModel getYoungestConstructor() {
+        return this.constructorRepository
+                .findYoungestTeam()
+                .stream()
+                .map(ConstructorViewModel::fromConstructor)
+                .toList().get(0);
+    }
 }

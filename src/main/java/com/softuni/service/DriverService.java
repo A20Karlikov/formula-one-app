@@ -37,4 +37,24 @@ public class DriverService {
                 DriverViewModel.class
         );
     }
+
+    public DriverViewModel getDriverWithMostWins() {
+        return this.driverRepository
+                .findDriverWithMostWins()
+                .stream()
+                .map(DriverViewModel::fromDriver)
+                .toList().get(0);
+    }
+
+    public DriverViewModel getDriverWithMostPodiums() {
+        return this.driverRepository
+                .findDriverWithMostPodiums()
+                .stream()
+                .map(DriverViewModel::fromDriver)
+                .toList().get(0);
+    }
+
+    public String getCountryWithMostDrivers() {
+        return this.driverRepository.findCountryWithMostDrivers().get(0);
+    }
 }

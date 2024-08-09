@@ -1,0 +1,260 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+
+    .records-grid-container {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 25px;
+        background: white;
+        justify-content: space-evenly;
+        padding: 25px;
+        border-radius: 25px;
+    }
+
+    .all-time-records-container {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        background:white;
+        justify-content: space-evenly;
+        padding: 25px;
+    }
+
+    .record-section-style {
+        display: grid;
+        grid-template-columns: auto 150px;
+        align-items:center;
+        border: 2px solid grey;
+        border-radius: 25px;
+        padding: 20px;
+    }
+
+    .record-image {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        border-radius: 25px;
+    }
+
+    .record-image:hover {
+        opacity: 0.6;
+    }
+
+    .record-texts {
+        display: flex;
+        flex-direction: column;
+        padding-right: 50px;
+    }
+
+    .record-line {
+        font-size: 30px;
+        color: grey
+    }
+
+    .second-part-record-images {
+        height: 500px;
+        border-radius: 25px;
+        object-fit: cover;
+    }
+
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body>
+
+<!-- Navigation -->
+<header th:replace="~{/fragments/navigation}"></header>
+
+<div class="records-grid-container">
+
+    <section style="padding: 20px">
+        <h1 style="font-weight: bold">Records(according to the active Drivers/Constructors)</h1>
+    </section>
+
+    <section class="record-section-style" th:object="${driverMostWins}">
+        <div class="record-texts">
+            <h3>Most Grand Prix Wins Victories (driver)</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'Victories: ' + *{numberOfWins}"></span>
+            <h3 th></h3>
+        </div>
+
+        <a th:href="@{/drivers/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${driverMostPodiums}">
+        <div class="record-texts">
+            <h3>Most Grand Prix Wins Podiums (driver)</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'Podiums: ' + *{podiums}"></span>
+        </div>
+
+        <a th:href="@{/drivers/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${constructorWithMostWins}">
+        <div class="record-texts">
+            <h3>Most Grand Prix Wins Podiums (constructor)</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'Victories: ' + *{numberOfWins}"></span>
+        </div>
+
+        <a th:href="@{/constructors/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${constructorWithMostTitles}">
+        <div class="record-texts">
+            <h3>Most Constructors’ World Championships</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'World Championships: ' + *{worldTitles}"></span>
+        </div>
+
+        <a th:href="@{/constructors/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style">
+        <div class="record-texts">
+            <h3>Country with Most Drivers</h3>
+            <h1 th:text="*{countryWithMostDrivers}"></h1>
+        </div>
+    </section>
+
+    <section class="record-section-style" th:object="${oldestConstructor}">
+        <div class="record-texts">
+            <h3>Oldest F1 Constructor</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'First Team Entry: ' + *{firstTeamEntry}"></span>
+        </div>
+
+        <a th:href="@{/constructors/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${youngestConstructor}">
+        <div class="record-texts">
+            <h3>Youngest F1 Constructor</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'First Team Entry: ' + *{firstTeamEntry}"></span>
+        </div>
+
+        <a th:href="@{/constructors/{name}(name=*{name})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+    <section class="record-section-style" th:object="${trackWithMostLaps}">
+        <div class="record-texts">
+            <h3>Track with Most Laps</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'Laps: ' + *{numberOfLaps}"></span>
+        </div>
+
+        <a th:href="@{/tracks/{name}(name=*{country})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+
+
+    <section class="record-section-style" th:object="${oldestTrack}">
+        <div class="record-texts">
+            <h3>Oldest F1 Track</h3>
+            <h1 th:text="*{name}"></h1>
+            <span class="record-line" th:text="'First Grand Prix: ' + *{firstRace}"></span>
+        </div>
+
+        <a th:href="@{/tracks/{name}(name=*{country})}">
+            <img class="record-image" th:src="*{imageUrl}">
+        </a>
+    </section>
+</div>
+
+<div class="records-grid-container">
+    <section style="padding: 20px">
+        <h1>Formula One records that may never be broken</h1>
+        <h3>From the fastest-ever pit stop to the youngest driver to start a race, we delve into some of F1's most
+            remarkable records.</h3>
+    </section>
+    <section></section>
+
+    <div style="margin-bottom: -30px">
+        <h2>Fastest pit stop: Red Bull Racing</h2>
+        <h5>The record: 1.82 seconds</h5>
+        <p>All the Aston Martin Red Bull racing team needed was 1.82 seconds to change the four tires of Max
+            Verstappen's
+            RB15 at the Brazilian GP in 2019. Previously that season, the team had already broken the world record for
+            the
+            fastest pit stop three times but continued to raise the bar.</p>
+    </div>
+
+    <div style="margin-bottom: -30px">
+        <h2>Most starts: Fernando Alonso</h2>
+        <h5>The record: 358 races (still racing)</h5>
+        <p>No one in the history of Formula One has raced more than Fernando Alonso. The Spaniard, the world champion of
+            2005 and 2006, passed Kimi Raikkonen's previous record of 349 race starts in the 2022 season. Still
+            competing in
+            F1 and after three F1 stops of the 2023 season, Alonso has started a staggering 358 races.</p>
+    </div>
+
+    <img class="second-part-record-images" src="/images/record-pit-stop.jpg">
+    <img class="second-part-record-images" src="/images/most-starts.jpg">
+
+
+    <div style="margin-bottom: -30px; margin-top:50px;">
+        <h2>Fastest speed: Valtteri Bottas</h2>
+        <h5>The record: 372.5kph</h5>
+        <p>F1 is known for its breathtaking speed, and at the 2016 Mexican GP, Finnish driver Valtteri Bottas set the
+            mark to beat when he reached an official top speed of 372.5kph. The FIA even unofficially claimed 373.3kph,
+            but either way, it made Bottas the first F1 driver to reach the 370kph mark in a grands prix.</p>
+    </div>
+
+    <div style="margin-bottom: -30px;  margin-top:50px;">
+        <h2>Quickest to earn a penalty: Sebastien Vettel</h2>
+        <h5>The record: 6 seconds</h5>
+        <p>From becoming the youngest world champion to earning the most consecutive wins, Sebastien Vettel has broken
+            just about every Formula One record throughout his 16-year career. This includes the record for receiving
+            the fastest penalty. In his first F1 appearance at the 2006 Turkish Grand Prix, Vettel drove out of the
+            garage and accelerated in the pit lane, earning him a penalty just six seconds into his F1 career.</p>
+    </div>
+
+    <img class="second-part-record-images" src="/images/speed-record.jpg">
+    <img class="second-part-record-images" src="/images/quickest-penalty.jpg">
+
+
+    <div style="margin-bottom: -30px; margin-top:50px;">
+        <h2>Youngest winner: Max Verstappen</h2>
+        <h5>The record: 18 years and 227 days</h5>
+        <p>Having become the youngest driver ever to score points in a GP in 2015, Verstappen would make the move to Red
+            Bull Racing in 2016 and solidified his name into the history books when he became the youngest winner in F1
+            history – at 18 years and 227 days old – triumphing at the Spanish Grand Prix and beating the previous
+            record held by Sebastian Vettel.</p>
+    </div>
+
+    <div style="margin-bottom: -30px;  margin-top:50px;">
+        <h2>Fastest race: Michael Schumacher</h2>
+        <h5>The record: 1 hour 14 minutes and 19.838 seconds</h5>
+        <p>The fastest Formula One race of all time took place in Monza when Michael Schumacher won the 2003 Italian
+            Grand Prix with an average speed of 247.585kph and a total race time of just 1hr 14m and 19.838s. In doing
+            so, the 2003 Italian Grand Prix became the shortest F1 race ever without the use of a red flag.</p>
+    </div>
+
+    <img class="second-part-record-images" src="/images/youngest-winner.jpg">
+    <img class="second-part-record-images" src="/images/fastest-win.webp">
+</div>
+
+
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+</html>

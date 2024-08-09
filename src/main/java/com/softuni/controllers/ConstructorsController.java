@@ -21,7 +21,7 @@ public class ConstructorsController extends BaseController {
 
     @GetMapping
     public ModelAndView getAllTeams(ModelAndView modelAndView) {
-        return this.view("constructors", modelAndView.addObject("constructors", this.constructorService.getAllConstructors()));
+        return super.view("constructors", modelAndView.addObject("constructors", this.constructorService.getAllConstructors()));
     }
 
     @GetMapping("/{name}")
