@@ -221,14 +221,14 @@ VALUES (9,'Las Vegas Strip Circuit','USA','https://cdn.britannica.com/33/4833-00
 
 
 -- Races
-INSERT INTO races (id, track_id, winner_id, fastest_lap_holder_id, weather)
-VALUES (1, 1, 1, 3, 'RAINY');
+INSERT INTO races (id, track_id, winner_id, runner_up_id, third_place_id, fastest_lap_holder_id, weather)
+VALUES (1, 1, 5, 8, 3, 3, 'RAINY');
 
-INSERT INTO races (id, track_id, winner_id, fastest_lap_holder_id, weather)
-VALUES (2, 2, 4, 7, 'SUNNY');
+INSERT INTO races (id, track_id, winner_id, runner_up_id, third_place_id, fastest_lap_holder_id, weather)
+VALUES (2, 2, 4, 3, 7, 7, 'SUNNY');
 
-INSERT INTO races (id, track_id, winner_id, fastest_lap_holder_id, weather)
-VALUES (3, 3, 1, 9, 'CLOUDY');
+INSERT INTO races (id, track_id, winner_id, runner_up_id, third_place_id, fastest_lap_holder_id, weather)
+VALUES (3, 3, 1, 2, 4, 9, 'CLOUDY');
 
-INSERT INTO races (id, track_id, winner_id, fastest_lap_holder_id, weather)
-VALUES (4, 4, 3, 1, 'SUNNY');
+INSERT INTO races (id, track_id, winner_id, runner_up_id, third_place_id, fastest_lap_holder_id, weather)
+VALUES (4, 4, 3, 8, 4, 1, 'SUNNY');

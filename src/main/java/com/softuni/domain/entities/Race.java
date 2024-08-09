@@ -16,6 +16,12 @@ public class Race extends BaseEntity {
     private Driver winner;
 
     @OneToOne
+    private Driver runnerUp;
+
+    @OneToOne
+    private Driver thirdPlace;
+
+    @OneToOne
     private Driver fastestLapHolder;
 
     @Enumerated(EnumType.STRING)
@@ -72,5 +78,21 @@ public class Race extends BaseEntity {
     public Race setComments(Set<Comment> comments) {
         this.comments = comments;
         return this;
+    }
+
+    public Driver getRunnerUp() {
+        return runnerUp;
+    }
+
+    public void setRunnerUp(Driver runnerUp) {
+        this.runnerUp = runnerUp;
+    }
+
+    public Driver getThirdPlace() {
+        return thirdPlace;
+    }
+
+    public void setThirdPlace(Driver thirdPlace) {
+        this.thirdPlace = thirdPlace;
     }
 }
