@@ -9,6 +9,8 @@ public class RaceModel {
     private Long id;
     private TrackModel track;
     private DriverModel winner;
+    private DriverModel runnerUp;
+    private DriverModel thirdPlace;
     private DriverModel fastestLapHolder;
     private WeatherType weather;
     private Set<CommentModel> comments;
@@ -68,5 +70,21 @@ public class RaceModel {
     public RaceModel setComments(Set<CommentModel> comments) {
         this.comments = comments;
         return this;
+    }
+
+    public DriverModel getRunnerUp() {
+        return runnerUp;
+    }
+
+    public void setRunnerUp(DriverModel runnerUp) {
+        this.runnerUp = runnerUp;
+    }
+
+    public DriverModel getThirdPlace() {
+        return thirdPlace;
+    }
+
+    public void setThirdPlace(DriverModel thirdPlace) {
+        this.thirdPlace = thirdPlace;
     }
 }
