@@ -27,7 +27,8 @@ public class Race extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private WeatherType weather;
 
-    @OneToMany(targetEntity = Comment.class,
+    @OneToMany(fetch = FetchType.EAGER,
+            targetEntity = Comment.class,
             mappedBy = "race",
             cascade = {CascadeType.MERGE, CascadeType.DETACH})
     private Set<Comment> comments;

@@ -4,16 +4,13 @@
 <style>
 
     .main-results-container {
-        margin-top: 50px;
         display: grid;
         grid-template-columns: 400px auto;
+        margin-top: 50px;
         gap: 0px 50px;
     }
 
     .race-headers {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
         background: white;
         border-radius: 25px;
         padding: 35px;
@@ -24,13 +21,14 @@
         border-bottom: 1px solid black;
         border-right: 1px solid black;
         border-bottom-right-radius: 10px;
+        margin-bottom: 20px;
     }
 
     .single-race-results {
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 50px;
+        padding-bottom: 20px;
         background: white;
         border-radius: 25px;
     }
@@ -73,7 +71,7 @@
     }
 
     .podium-step {
-        text-size: 120px;
+        font-size: 90px;
         font-style: italic;
     }
 
@@ -81,6 +79,10 @@
         width: 100px;
         height: 100px;
         object-fit: contain;
+    }
+
+    .vertical-spacer {
+        height: 15px;
     }
 
 </style>
@@ -123,6 +125,7 @@
                 <a th:href="@{/drivers/{name}(name=*{runnerUp})}">
                     <img style="height: 400px; width: 200px; border-radius: 15px; object-fit: cover;" th:src="*{runnerUpImage}">
                 </a>
+                <div class="vertical-spacer"></div>
                 <h6 th:text="*{runnerUp}"></h6>
             </div>
 
@@ -132,6 +135,7 @@
                 <a th:href="@{/drivers/{name}(name=*{winner})}">
                     <img style="height: 500px; width: 200px; border-radius: 15px; object-fit: cover;" th:src="*{winnerImage}">
                 </a>
+                <div class="vertical-spacer"></div>
                 <h6 th:text="*{winner}"></h6>
             </div>
 
@@ -141,7 +145,50 @@
                 <a th:href="@{/drivers/{name}(name=*{thirdPlace})}">
                     <img style="height: 300px; width: 200px; border-radius: 15px; object-fit: cover;" th:src="*{thirdPlaceImage}">
                 </a>
+                <div class="vertical-spacer"></div>
                 <h6 th:text="*{thirdPlace}"></h6>
+            </div>
+        </div>
+
+        <div th:unless="${@loggedUser.id == null}" class="col">
+            <h1 style="margin-bottom: 20px;">Comments</h1>
+            <div style="border-bottom: 2px solid black; margin-bottom: 20px;" th:each="comment : ${comments}" th:object="${comment}">
+                <h4 th:text="*{author}"></h4>
+                <h6 th:text="*{dateCreated}"></h6>
+                <p th:text="*{text}"></p>
+            </div>
+
+            <div>
+                <!-- Comments submission -->
+                <form id="commentForm"
+                      th:method="POST"
+                      th:action=@{/races/{id}(id=${raceId})}
+                      th:object="${commentForm}"
+                >
+                    <div class="form-group">
+                        <h4>Leave a comment</h4>
+                        <textarea name="text"
+                                  id="text"
+                                  cols="30"
+                                  rows="5"
+                                  min="5"
+                                  class="form-control"
+                                  th:value="*{text}"
+                                  style="background-color: white;"></textarea>
+                        <p th:if="${#fields.hasErrors('text')}"
+                           class="errors alert alert-danger">
+                            Your comment should be at least 5 characters.
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit"
+                               class="btn"
+                               id="postComment"
+                               value="Post Comment"/>
+                    </div>
+                </form>
+                <!-- Comments submission -->
             </div>
         </div>
 

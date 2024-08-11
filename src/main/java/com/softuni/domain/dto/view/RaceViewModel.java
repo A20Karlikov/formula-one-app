@@ -1,7 +1,10 @@
 package com.softuni.domain.dto.view;
 
+import com.softuni.domain.dto.models.CommentModel;
 import com.softuni.domain.entities.Race;
 import com.softuni.domain.enums.WeatherType;
+
+import java.util.List;
 
 public class RaceViewModel {
 
