@@ -14,6 +14,8 @@ public interface TrackRepository extends JpaRepository<Track, Long> {
 
     List<Track> findAll();
 
+    Optional<Track> findByName(String name);
+
     @Query("SELECT t FROM Track t WHERE t.numberOfLaps = (SELECT MAX(t2.numberOfLaps) FROM Track t2)")
     List<Track> findTrackWithMostLaps();
 

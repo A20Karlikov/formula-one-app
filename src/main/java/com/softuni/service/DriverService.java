@@ -1,5 +1,6 @@
 package com.softuni.service;
 
+import com.softuni.domain.dto.models.DriverModel;
 import com.softuni.domain.dto.view.DriverViewModel;
 import com.softuni.domain.entities.Driver;
 import com.softuni.repository.DriverRepository;
@@ -61,5 +62,15 @@ public class DriverService {
 
     public List<String> getDriversNames() {
         return this.driverRepository.findAll().stream().map(Driver::getName).toList();
+    }
+
+    public void addWinAndPodiumToDriver(String name, Boolean isWinner) {
+        final DriverModel winner = this.modelMapper.map(this.driverRepository.findByName(name).get(), DriverModel.class);
+        if (isWinner) {
+            winner.setNumberOfWins(winner.getNumberOfWins() + 1);
+        }
+        winner.setPodiums(winner.getPodiums() + 1);
+
+        this.driverRepository.saveAndFlush(this.modelMapper.map(winner, Driver.class));
     }
 }

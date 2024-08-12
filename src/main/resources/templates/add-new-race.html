@@ -44,6 +44,11 @@
                th:object="${addNewRaceForm}"
                class="flex flex-column justify-content-center">
 
+        <p th:if="${#fields.hasErrors('thirdPlace')}"
+           class="errors alert alert-danger">
+            Drivers on the podium should be different. Please select all fields again.
+        </p>
+
         <div class="select-row">
                 <label for="track"
                        class="text-white font-weight-bold">
@@ -106,6 +111,7 @@
                         th:text="${driverNames}"
                 ></option>
             </select>
+
         </div>
 
         <div class="select-row">
@@ -124,13 +130,13 @@
         </div>
 
         <div class="select-row">
-            <label for="thirdPlace"
+            <label for="weather"
                    class="text-white font-weight-bold">
                 Weather
             </label>
             <div class="horizontal-spacer"></div>
 
-            <select id="weatherType" name="weatherType">
+            <select id="weather" name="weather">
                 <option
                         th:each="weatherType : ${weatherTypes}"
                         th:value="${weatherType}"

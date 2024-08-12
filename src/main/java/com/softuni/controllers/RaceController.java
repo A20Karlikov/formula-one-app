@@ -1,5 +1,6 @@
 package com.softuni.controllers;
 
+import com.softuni.domain.dto.forms.AddNewRaceForm;
 import com.softuni.domain.dto.forms.CommentForm;
 import com.softuni.service.DriverService;
 import com.softuni.service.RaceService;
@@ -69,10 +70,34 @@ public class RaceController extends BaseController {
     public ModelAndView getInputOptions(ModelAndView modelAndView) {
         return super.view(
                 "add-new-race",
-                    modelAndView
-                            .addObject("driversNames", this.driverService.getDriversNames())
-                            .addObject("tracksNames", this.trackService.getTracksNames())
-                            .addObject("weatherTypes", this.raceService.getRaceWeatherTypes())
-                );
+                modelAndView
+                        .addObject("driversNames", this.driverService.getDriversNames())
+                        .addObject("tracksNames", this.trackService.getTracksNames())
+                        .addObject("weatherTypes", this.raceService.getRaceWeatherTypes())
+        );
+    }
+
+    @PostMapping("/add")
+    public ModelAndView addNewRaceSubmitted(
+            @Valid @ModelAttribute(name = "addNewRaceForm") AddNewRaceForm addNewRaceForm,
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes
+    ) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("addNewRaceForm", addNewRaceForm)
+                    .addFlashAttribute(BINDING_RESULT_PATH + "addNewRaceForm", bindingResult);
+
+            return super.redirect("/races/add");
+        }
+
+        this.raceService.addNewRace(addNewRaceForm);
+
+        return super.redirect("/races/1");
+    }
+
+    @ModelAttribute("addNewRaceForm")
+    public AddNewRaceForm initAddNewRaceForm() {
+        return new AddNewRaceForm();
     }
 }

@@ -1,5 +1,8 @@
 package com.softuni.domain.dto.forms;
 
+import com.softuni.validation.podiumMatcher.PodiumMatch;
+
+@PodiumMatch(winner = "winner", runnerUp = "runnerUp", thirdPlace = "thirdPlace")
 public class AddNewRaceForm {
 
     private String track;
