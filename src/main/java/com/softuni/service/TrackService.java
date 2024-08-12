@@ -54,4 +54,12 @@ public class TrackService {
                 .map(TrackViewModel::fromTrack)
                 .toList().get(0);
     }
+
+    public List<String> getTracksNames() {
+        return this.trackRepository.findAll().stream().map(Track::getName).toList();
+    }
+
+    public Track getTrackByName(String name) {
+        return this.trackRepository.findByName(name).get();
+    }
 }

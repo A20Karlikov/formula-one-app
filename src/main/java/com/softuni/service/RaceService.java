@@ -1,23 +1,27 @@
 package com.softuni.service;
 
+import com.softuni.domain.dto.forms.AddNewRaceForm;
 import com.softuni.domain.dto.forms.CommentForm;
-import com.softuni.domain.dto.models.CommentModel;
-import com.softuni.domain.dto.models.RaceModel;
-import com.softuni.domain.dto.models.UserModel;
+import com.softuni.domain.dto.models.*;
 import com.softuni.domain.dto.view.CommentViewModel;
 import com.softuni.domain.dto.view.RaceHeaderViewModel;
 import com.softuni.domain.dto.view.RaceViewModel;
 import com.softuni.domain.entities.Comment;
 import com.softuni.domain.entities.Race;
-import com.softuni.domain.entities.User;
+import com.softuni.domain.enums.WeatherType;
 import com.softuni.helpers.LoggedUser;
 import com.softuni.repository.CommentRepository;
+import com.softuni.repository.DriverRepository;
 import com.softuni.repository.RaceRepository;
+import com.softuni.repository.TrackRepository;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -28,14 +32,18 @@ public class RaceService {
     private final ModelMapper modelMapper;
     private final LoggedUser loggedUser;
     private final CommentRepository commentRepository;
+    private final DriverService driverService;
+    private final TrackService trackService;
 
     @Autowired
-    public RaceService(RaceRepository raceRepository, UserService userService, ModelMapper modelMapper, LoggedUser loggedUser, CommentRepository commentRepository) {
+    public RaceService(RaceRepository raceRepository, UserService userService, ModelMapper modelMapper, LoggedUser loggedUser, CommentRepository commentRepository, DriverRepository driverRepository, DriverService driverService, TrackService trackService) {
         this.raceRepository = raceRepository;
         this.userService = userService;
         this.modelMapper = modelMapper;
         this.loggedUser = loggedUser;
         this.commentRepository = commentRepository;
+        this.driverService = driverService;
+        this.trackService = trackService;
     }
 
     public RaceViewModel getSelectedRace(Long id) {
@@ -72,5 +80,39 @@ public class RaceService {
         final Comment commentToAdd = this.modelMapper.map(commentModel, Comment.class);
 
         this.modelMapper.map(this.commentRepository.saveAndFlush(commentToAdd), CommentModel.class);
+    }
+
+    public List<String> getRaceWeatherTypes() {
+        return Arrays.stream(WeatherType.values()).map(Enum::name).toList();
+    }
+
+    public void addNewRace(AddNewRaceForm addNewRaceForm) {
+
+        modelMapper.addMappings(new PropertyMap<AddNewRaceForm, RaceModel>() {
+            @Override
+            protected void configure() {
+                skip(destination.getTrack());
+                skip(destination.getWinner());
+                skip(destination.getRunnerUp());
+                skip(destination.getThirdPlace());
+                skip(destination.getFastestLapHolder());
+                skip(destination.getWeather());
+                skip(destination.getComments());
+            }
+        });
+
+        RaceModel raceModel = modelMapper.map(addNewRaceForm, RaceModel.class);
+        raceModel.setTrack(this.modelMapper.map(this.trackService.getTrackByName(addNewRaceForm.getTrack()), TrackModel.class))
+                .setWinner(this.modelMapper.map(this.driverService.getDriverDetails(addNewRaceForm.getWinner()), DriverModel.class))
+                .setRunnerUp(this.modelMapper.map(this.driverService.getDriverDetails(addNewRaceForm.getRunnerUp()), DriverModel.class))
+                .setThirdPlace(this.modelMapper.map(this.driverService.getDriverDetails(addNewRaceForm.getThirdPlace()), DriverModel.class))
+                .setFastestLapHolder(this.modelMapper.map(this.driverService.getDriverDetails(addNewRaceForm.getFastestLapHolder()), DriverModel.class))
+                .setWeather(WeatherType.valueOf(addNewRaceForm.getWeather()));
+
+        this.driverService.addWinAndPodiumToDriver(addNewRaceForm.getWinner(), true);
+        this.driverService.addWinAndPodiumToDriver(addNewRaceForm.getRunnerUp(), false);
+        this.driverService.addWinAndPodiumToDriver(addNewRaceForm.getThirdPlace(), false);
+
+        this.raceRepository.saveAndFlush(this.modelMapper.map(raceModel, Race.class));
     }
 }

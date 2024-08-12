@@ -45,6 +45,24 @@ public class RaceModel {
         return this;
     }
 
+    public DriverModel getRunnerUp() {
+        return runnerUp;
+    }
+
+    public RaceModel setRunnerUp(DriverModel runnerUp) {
+        this.runnerUp = runnerUp;
+        return this;
+    }
+
+    public DriverModel getThirdPlace() {
+        return thirdPlace;
+    }
+
+    public RaceModel setThirdPlace(DriverModel thirdPlace) {
+        this.thirdPlace = thirdPlace;
+        return this;
+    }
+
     public DriverModel getFastestLapHolder() {
         return fastestLapHolder;
     }
@@ -70,21 +88,5 @@ public class RaceModel {
     public RaceModel setComments(Set<CommentModel> comments) {
         this.comments = comments;
         return this;
-    }
-
-    public DriverModel getRunnerUp() {
-        return runnerUp;
-    }
-
-    public void setRunnerUp(DriverModel runnerUp) {
-        this.runnerUp = runnerUp;
-    }
-
-    public DriverModel getThirdPlace() {
-        return thirdPlace;
-    }
-
-    public void setThirdPlace(DriverModel thirdPlace) {
-        this.thirdPlace = thirdPlace;
     }
 }

@@ -17,7 +17,7 @@
         </ul>
         <ul th:unless="${@loggedUser.id == null}">
             <li>
-                <a href="/">Add new race</a>
+                <a th:href="@{/races/add}">Add new race</a>
             </li>
 
             <li>
