@@ -1,6 +1,7 @@
 package com.softuni.service;
 
 import com.softuni.domain.dto.view.DriverViewModel;
+import com.softuni.domain.entities.Driver;
 import com.softuni.repository.DriverRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,9 @@ public class DriverService {
 
     public String getCountryWithMostDrivers() {
         return this.driverRepository.findCountryWithMostDrivers().get(0);
+    }
+
+    public List<String> getDriversNames() {
+        return this.driverRepository.findAll().stream().map(Driver::getName).toList();
     }
 }

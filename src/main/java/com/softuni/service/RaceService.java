@@ -8,8 +8,9 @@ import com.softuni.domain.dto.view.CommentViewModel;
 import com.softuni.domain.dto.view.RaceHeaderViewModel;
 import com.softuni.domain.dto.view.RaceViewModel;
 import com.softuni.domain.entities.Comment;
+import com.softuni.domain.entities.Driver;
 import com.softuni.domain.entities.Race;
-import com.softuni.domain.entities.User;
+import com.softuni.domain.enums.WeatherType;
 import com.softuni.helpers.LoggedUser;
 import com.softuni.repository.CommentRepository;
 import com.softuni.repository.RaceRepository;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -72,5 +74,9 @@ public class RaceService {
         final Comment commentToAdd = this.modelMapper.map(commentModel, Comment.class);
 
         this.modelMapper.map(this.commentRepository.saveAndFlush(commentToAdd), CommentModel.class);
+    }
+
+    public List<String> getRaceWeatherTypes() {
+        return Arrays.stream(WeatherType.values()).map(Enum::name).toList();
     }
 }

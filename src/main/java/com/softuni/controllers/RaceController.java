@@ -1,8 +1,9 @@
 package com.softuni.controllers;
 
 import com.softuni.domain.dto.forms.CommentForm;
-import com.softuni.domain.dto.forms.UserRegisterForm;
+import com.softuni.service.DriverService;
 import com.softuni.service.RaceService;
+import com.softuni.service.TrackService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,14 @@ public class RaceController extends BaseController {
     public static final String BINDING_RESULT_PATH = "org.springframework.validation.BindingResult.";
 
     private final RaceService raceService;
+    private final DriverService driverService;
+    private final TrackService trackService;
 
     @Autowired
-    public RaceController(RaceService raceService) {
+    public RaceController(RaceService raceService, DriverService driverService, TrackService trackService) {
         this.raceService = raceService;
+        this.driverService = driverService;
+        this.trackService = trackService;
     }
 
     @GetMapping("/{id}")
@@ -58,5 +63,16 @@ public class RaceController extends BaseController {
     @ModelAttribute("commentForm")
     public CommentForm initCommentForm() {
         return new CommentForm();
+    }
+
+    @GetMapping("/add")
+    public ModelAndView getInputOptions(ModelAndView modelAndView) {
+        return super.view(
+                "add-new-race",
+                    modelAndView
+                            .addObject("driversNames", this.driverService.getDriversNames())
+                            .addObject("tracksNames", this.trackService.getTracksNames())
+                            .addObject("weatherTypes", this.raceService.getRaceWeatherTypes())
+                );
     }
 }

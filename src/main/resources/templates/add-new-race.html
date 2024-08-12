@@ -1,0 +1,152 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+
+<style>
+    .horizontal-spacer {
+        width: 20px;
+    }
+
+    .select-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body>
+
+<!-- Navigation -->
+<header th:replace="~{/fragments/navigation}"></header>
+
+<div class="div-title">
+    <h1 style="color:white;">Add new race</h1>
+</div>
+
+<div class="form-container">
+
+
+    <form th:method="POST"
+               th:action="@{/races/add}"
+               th:object="${addNewRaceForm}"
+               class="flex flex-column justify-content-center">
+
+        <div class="select-row">
+                <label for="track"
+                       class="text-white font-weight-bold">
+                    Track
+                </label>
+                <div class="horizontal-spacer"></div>
+
+                <select id="track" name="track">
+                    <option
+                            th:each="trackName : ${tracksNames}"
+                            th:value="${trackName}"
+                            th:text="${trackName}"
+                    ></option>
+                </select>
+        </div>
+
+        <div class="select-row">
+            <label for="winner"
+                   class="text-white font-weight-bold">
+                Winner
+            </label>
+            <div class="horizontal-spacer"></div>
+
+            <select id="winner" name="winner">
+                <option
+                        th:each="driverNames : ${driversNames}"
+                        th:value="${driverNames}"
+                        th:text="${driverNames}"
+                ></option>
+            </select>
+        </div>
+
+        <div class="select-row">
+            <label for="runnerUp"
+                   class="text-white font-weight-bold">
+                Runner-up
+            </label>
+            <div class="horizontal-spacer"></div>
+
+            <select id="runnerUp" name="runnerUp">
+                <option
+                        th:each="driverNames : ${driversNames}"
+                        th:value="${driverNames}"
+                        th:text="${driverNames}"
+                ></option>
+            </select>
+        </div>
+
+        <div class="select-row">
+            <label for="thirdPlace"
+                   class="text-white font-weight-bold">
+                Third Place
+            </label>
+            <div class="horizontal-spacer"></div>
+
+            <select id="thirdPlace" name="thirdPlace">
+                <option
+                        th:each="driverNames : ${driversNames}"
+                        th:value="${driverNames}"
+                        th:text="${driverNames}"
+                ></option>
+            </select>
+        </div>
+
+        <div class="select-row">
+            <label for="thirdPlace"
+                   class="text-white font-weight-bold">
+                Fastest Lap Holder
+            </label>
+            <div class="horizontal-spacer"></div>
+
+            <select id="fastestLapHolder" name="fastestLapHolder">
+                <option
+                        th:each="driverNames : ${driversNames}"
+                        th:text="${driverNames}"
+                ></option>
+            </select>
+        </div>
+
+        <div class="select-row">
+            <label for="thirdPlace"
+                   class="text-white font-weight-bold">
+                Weather
+            </label>
+            <div class="horizontal-spacer"></div>
+
+            <select id="weatherType" name="weatherType">
+                <option
+                        th:each="weatherType : ${weatherTypes}"
+                        th:value="${weatherType}"
+                        th:text="${weatherType}"
+                ></option>
+            </select>
+        </div>
+
+            <div style="margin-left: 80px; margin-top: 30px;">
+                <div class="button-holder d-flex">
+                    <input type="submit" class="btn btn-info btn-lg" value="Add race"/>
+                </div>
+            </div>
+    </form>
+</div>
+
+<footer th:replace="~{/fragments/footer}"></footer>
+</body>
+</html>
