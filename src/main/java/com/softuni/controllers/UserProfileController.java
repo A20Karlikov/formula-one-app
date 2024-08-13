@@ -30,4 +30,9 @@ public class UserProfileController extends BaseController {
                         .addObject("roles", this.userService.getUserRolesAsString())
         );
     }
+
+    @GetMapping("/admin")
+    public ModelAndView getAdminProfile(ModelAndView modelAndView) {
+        return super.view("admin", modelAndView);
+    }
 }

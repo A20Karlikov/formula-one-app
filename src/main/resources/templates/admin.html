@@ -1,0 +1,43 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+    .under-construction-container {
+        background: white;
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        padding: 30px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 25px;
+    }
+
+    .image-style {
+        margin-top:50px;
+        width: 800px;
+        height: 500px;
+        object-fit: contain;
+        border-radius: 25px;
+    }
+
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body>
+<header th:replace="~{/fragments/navigation}">
+</header>
+
+<div class="under-construction-container">
+    <div class="div-title">
+        <h1 style="color:black;">This page is still in development. Please stay tuned.</h1>
+    </div>
+    
+    <img class="image-style" src="/images/under-construction.png">
+</div>
+
+
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+</html>
