@@ -285,7 +285,6 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    cursor: pointer;
     min-height: 65vh;
 }
 
