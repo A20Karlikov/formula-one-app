@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class DriverService {
@@ -65,12 +66,18 @@ public class DriverService {
     }
 
     public void addWinAndPodiumToDriver(String name, Boolean isWinner) {
-        final DriverModel winner = this.modelMapper.map(this.driverRepository.findByName(name).get(), DriverModel.class);
+        final DriverModel winner = this.modelMapper.map(this.driverRepository.findByName(name).orElseThrow(NoSuchElementException::new), DriverModel.class);
         if (isWinner) {
             winner.setNumberOfWins(winner.getNumberOfWins() + 1);
         }
         winner.setPodiums(winner.getPodiums() + 1);
 
         this.driverRepository.saveAndFlush(this.modelMapper.map(winner, Driver.class));
+    }
+
+    public String getConstructorOfDriver(String driverName) {
+        final DriverModel driver = this.modelMapper.map(this.driverRepository.findByName(driverName).orElseThrow(NoSuchElementException::new), DriverModel.class);
+
+        return driver.getConstructor().getName();
     }
 }
