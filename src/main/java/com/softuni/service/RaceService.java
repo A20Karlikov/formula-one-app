@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class RaceService {
@@ -34,9 +35,10 @@ public class RaceService {
     private final CommentRepository commentRepository;
     private final DriverService driverService;
     private final TrackService trackService;
+    private final ConstructorService constructorService;
 
     @Autowired
-    public RaceService(RaceRepository raceRepository, UserService userService, ModelMapper modelMapper, LoggedUser loggedUser, CommentRepository commentRepository, DriverRepository driverRepository, DriverService driverService, TrackService trackService) {
+    public RaceService(RaceRepository raceRepository, UserService userService, ModelMapper modelMapper, LoggedUser loggedUser, CommentRepository commentRepository, DriverRepository driverRepository, DriverService driverService, TrackService trackService, ConstructorService constructorService) {
         this.raceRepository = raceRepository;
         this.userService = userService;
         this.modelMapper = modelMapper;
@@ -44,6 +46,7 @@ public class RaceService {
         this.commentRepository = commentRepository;
         this.driverService = driverService;
         this.trackService = trackService;
+        this.constructorService = constructorService;
     }
 
     public RaceViewModel getSelectedRace(Long id) {
@@ -51,7 +54,8 @@ public class RaceService {
                 .stream()
                 .map(RaceViewModel::fromRace)
                 .filter(raceViewModel -> raceViewModel.getId().equals(id))
-                .findFirst().get();
+                .findFirst()
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public List<RaceHeaderViewModel> getRaceHeaders() {
@@ -62,7 +66,7 @@ public class RaceService {
     }
 
     public List<CommentViewModel> getSelectedRaceComments(Long id) {
-        Race currentRace = this.raceRepository.findById(id).get();
+        Race currentRace = this.raceRepository.findById(id).orElseThrow(NoSuchElementException::new);
 
         return currentRace.getComments().stream().map(CommentViewModel::fromComment).toList();
     }
@@ -112,6 +116,8 @@ public class RaceService {
         this.driverService.addWinAndPodiumToDriver(addNewRaceForm.getWinner(), true);
         this.driverService.addWinAndPodiumToDriver(addNewRaceForm.getRunnerUp(), false);
         this.driverService.addWinAndPodiumToDriver(addNewRaceForm.getThirdPlace(), false);
+
+        this.constructorService.addWinToConstructor(addNewRaceForm.getWinner());
 
         this.raceRepository.saveAndFlush(this.modelMapper.map(raceModel, Race.class));
     }

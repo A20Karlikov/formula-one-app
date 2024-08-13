@@ -29,6 +29,14 @@ body {
         padding-bottom: 60px;
 }
 
+.index-flag-image {
+        border-radius: 10px;
+}
+
+.index-flag-image:hover{
+    opacity: 0.6;
+}
+
 .div-title {
         padding-top: 25px;
         font-size: 75px;
@@ -70,7 +78,7 @@ img {
     grid-gap: 20px;
     padding: 0;
     list-style: none;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .main-nav a {
