@@ -3,6 +3,7 @@ package com.softuni.service;
 import com.softuni.domain.dto.forms.UserLoginForm;
 import com.softuni.domain.dto.forms.UserRegisterForm;
 import com.softuni.domain.dto.models.UserModel;
+import com.softuni.domain.dto.view.UserViewModel;
 import com.softuni.domain.entities.User;
 import com.softuni.helpers.LoggedUser;
 import com.softuni.repository.UserRepository;
@@ -10,6 +11,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
 
@@ -70,5 +73,15 @@ public class UserService {
                         .findByUsername(username)
                         .orElse(new User()),
                 UserModel.class);
+    }
+
+    public UserViewModel getLoggedUserProfile() {
+        return this.modelMapper.map(this.userRepository.findByUsername(loggedUser.getUsername()), UserViewModel.class);
+    }
+
+    public String getUserRolesAsString() {
+        User user = this.userRepository.findByUsername(loggedUser.getUsername()).orElseThrow(NoSuchElementException::new);
+
+        return String.join(", ", user.getRoles().stream().map(role -> role.getRole().name()).toList());
     }
 }

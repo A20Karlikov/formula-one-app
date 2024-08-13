@@ -1,0 +1,81 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<style>
+    .col-md-7 {
+        margin-top: 50px;
+        width: 1000px;
+    }
+
+    .vertical-spacer {
+        height: 20px;
+    }
+
+    .vertical-small-spacer {
+        .height: 10px;
+    }
+</style>
+
+<head th:replace="~{/fragments/head}">
+</head>
+<body>
+<header th:replace="~{/fragments/navigation}">
+</header>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-7">
+        <div class="profile-card p-3 py-4" th:object="${profile}">
+            <div class="text-center">
+                <img src="/images/profile-logo.webp" width="150" class="rounded-circle">
+            </div>
+            <div class="vertical-spacer"></div>
+
+            <div class="text-center mt-3">
+                <span class="bg-secondary p-1 px-4 rounded text-white"
+                      th:text="${roles}">Pro</span>
+                <div class="vertical-spacer"></div>
+
+                <h5 class="mt-2 mb-0">Username</h5>
+                <div class="vertical-small-spacer"></div>
+                <span th:text="*{username}"></span>
+
+                <h5 class="mt-2 mb-0">Email</h5>
+                <div class="vertical-small-spacer"></div>
+                <span th:text="*{email}"></span>
+
+                <h5 class="mt-2 mb-0">Age</h5>
+                <div class="vertical-small-spacer"></div>
+                <span th:text="*{age}"></span>
+
+                <div class="px-4 mt-5">
+                    <p class="fonts">As a registered and logged-in user on our platform, you're granted
+                        exclusive privileges designed to enhance your experience. One of these is the ability to
+                        join the conversation by writing and reading comments under the races info.</p>
+                    <p class="fonts">Your thoughts and insights matter to us and the wider community of race
+                        enthusiasts. Whether it's sharing your unique perspective on a race, discussing
+                        strategies, or simply expressing your excitement, your comments contribute to a richer,
+                        more interactive experience for everyone involved.</p>
+                    <p class="fonts">But that's not all! Being logged in opens up a range of other benefits.
+                        You'll have early access to exclusive content, receive important updates, and enjoy a
+                        personalized user experience tailored to your interests.</p>
+                    <p class="fonts">Remember, your voice is a vital part of our community. Don't hesitate to
+                        make the most of these privileges and engage with the content you love.</p>
+                    <p class="fonts">Enjoy your journey with us!</p>
+                </div>
+
+                <ul class="social-list">
+                    <li><i class="fab fa-facebook-square"></i></li>
+                    <li><i class="fab fa-instagram"></i></li>
+                    <li><i class="fab fa-linkedin"></i></li>
+                    <li><i class="fab fa-google"></i></li>
+                </ul>
+                <div class="buttons">
+                    <a class="btn btn-outline-primary px-4" th:href="@{/}">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer th:replace="~{fragments/footer}"></footer>
+</html>
