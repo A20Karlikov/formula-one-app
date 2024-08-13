@@ -23,6 +23,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class RaceService {
@@ -51,7 +52,8 @@ public class RaceService {
                 .stream()
                 .map(RaceViewModel::fromRace)
                 .filter(raceViewModel -> raceViewModel.getId().equals(id))
-                .findFirst().get();
+                .findFirst()
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public List<RaceHeaderViewModel> getRaceHeaders() {
@@ -62,7 +64,7 @@ public class RaceService {
     }
 
     public List<CommentViewModel> getSelectedRaceComments(Long id) {
-        Race currentRace = this.raceRepository.findById(id).get();
+        Race currentRace = this.raceRepository.findById(id).orElseThrow(NoSuchElementException::new);
 
         return currentRace.getComments().stream().map(CommentViewModel::fromComment).toList();
     }

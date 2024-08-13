@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 
 @Service
@@ -24,7 +25,8 @@ public class TrackService {
         return streamTracks()
                 .map(TrackViewModel::fromTrack)
                 .filter(trackViewModel -> trackViewModel.getCountry().equals(name))
-                .findFirst().get();
+                .findFirst()
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public List<TrackViewModel> getAllTracks() {
@@ -60,6 +62,6 @@ public class TrackService {
     }
 
     public Track getTrackByName(String name) {
-        return this.trackRepository.findByName(name).get();
+        return this.trackRepository.findByName(name).orElseThrow(NoSuchElementException::new);
     }
 }

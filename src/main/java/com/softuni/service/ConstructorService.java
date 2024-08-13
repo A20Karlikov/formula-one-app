@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Provider;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 @Service
@@ -41,7 +42,7 @@ public class ConstructorService {
 
     public List<DriverViewModel> getTeamDrivers(String name) {
         return this.constructorRepository.findByName(name)
-                .get()
+                .orElseThrow(NoSuchElementException::new)
                 .getDrivers()
                 .stream()
                 .map(DriverViewModel::fromDriver)
