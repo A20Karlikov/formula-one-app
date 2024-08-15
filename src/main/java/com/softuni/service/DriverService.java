@@ -75,7 +75,7 @@ public class DriverService {
         this.driverRepository.saveAndFlush(this.modelMapper.map(winner, Driver.class));
     }
 
-    public String getConstructorOfDriver(String driverName) {
+    public String getConstructorNameOfDriver(String driverName) {
         final DriverModel driver = this.modelMapper.map(this.driverRepository.findByName(driverName).orElseThrow(NoSuchElementException::new), DriverModel.class);
 
         return driver.getConstructor().getName();
