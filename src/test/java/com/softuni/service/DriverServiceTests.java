@@ -39,7 +39,7 @@ public class DriverServiceTests {
     List<Driver> drivers = new ArrayList<>();
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         driverMax = new Driver() {{
             setId(1L);
             setConstructor(mock(Constructor.class));
