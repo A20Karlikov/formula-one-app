@@ -12,12 +12,14 @@ import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 public class RoleServiceTests {
@@ -92,5 +94,16 @@ public class RoleServiceTests {
 
         // Assert
         assertThat(result).isEqualTo(roleModelUser);
+    }
+
+    @Test
+    public void roleService_FindRoleByNameThrowsExceptionTest() {
+        String roleName = "USER";
+
+        when(roleRepository.findByRole(RoleName.valueOf(roleName))).thenReturn(Optional.empty());
+
+        assertThrows(NoSuchElementException.class, () -> {
+            roleService.findRoleByName(roleName);
+        });
     }
 }
