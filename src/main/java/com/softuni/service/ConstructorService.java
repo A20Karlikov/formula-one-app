@@ -83,7 +83,7 @@ public class ConstructorService {
     }
 
     public void addWinToConstructor(String driverName) {
-        final String constructorName = this.driverService.getConstructorOfDriver(driverName);
+        final String constructorName = this.driverService.getConstructorNameOfDriver(driverName);
 
         final ConstructorModel constructorWinner = this.modelMapper.map(
                 this.constructorRepository.findByName(constructorName).orElseThrow(NoSuchElementException::new),
